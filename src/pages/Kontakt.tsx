@@ -6,7 +6,6 @@ import { Mail, Target, CheckCircle, Award, AlertCircle } from 'lucide-react';
 import type { CheckedState } from '@radix-ui/react-checkbox';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import * as LabelPrimitive from '@radix-ui/react-label';
-import { dataService } from '../services/dataService';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import type { ContactFormData, SubmitStatus } from '../types';
@@ -27,6 +26,7 @@ const INITIAL_FORM: ContactFormData = {
 
 export default function Kontakt() {
   const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM);
+  const [honeypot, setHoneypot] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
   const [formError, setFormError] = useState<string | null>(null);
@@ -44,6 +44,8 @@ export default function Kontakt() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot: wenn Bot dieses Feld ausgefüllt hat → ignorieren
+    if (honeypot) return;
     if (!formData.consent) {
       setFormError('Bitte bestätigen Sie die Datenschutzerklärung.');
       return;
@@ -52,7 +54,22 @@ export default function Kontakt() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
     try {
-      await dataService.submitContact(formData);
+      const body = new URLSearchParams({
+        'form-name': 'kontakt',
+        'bot-field': honeypot,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || '',
+        subject: formData.subject,
+        message: formData.message,
+        consent: formData.consent ? 'ja' : 'nein',
+      });
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+      if (!res.ok) throw new Error('Netlify form error');
       setSubmitStatus('success');
       setFormData(INITIAL_FORM);
       setTimeout(() => setSubmitStatus('idle'), 6000);
@@ -181,7 +198,29 @@ export default function Kontakt() {
               className="lg:w-7/12 bg-white p-8 md:p-12 border border-[#2D4A3E]/10 shadow-sm"
             >
               <h3 className="font-heading text-2xl text-[#1A1A1A] mb-8">Nachricht senden</h3>
-              <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-8"
+                noValidate
+                name="kontakt"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                {/* Pflichtfelder für Netlify */}
+                <input type="hidden" name="form-name" value="kontakt" />
+                {/* Honeypot – für Menschen unsichtbar, Bots füllen es aus */}
+                <div style={{ display: 'none' }} aria-hidden="true">
+                  <label>
+                    Dieses Feld nicht ausfüllen:
+                    <input
+                      name="bot-field"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </label>
+                </div>
                 <div className="grid md:grid-cols-2 gap-8">
                   {[
                     { id: 'name', label: 'Name', type: 'text', required: true },
