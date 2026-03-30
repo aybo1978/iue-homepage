@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
 import Header from '../components/Header';
@@ -77,6 +78,12 @@ const VORTEILE = [
 export default function Foerdermoeglichkeiten() {
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A] overflow-clip">
+      <SEO
+        title="Fördermöglichkeiten"
+        description="Nutzen Sie staatliche Förderprogramme für Coaching und Beratung. BAFA, INQA, Digital Jetzt, ZIM und mehr. Das IUE Institut hilft Ihnen die passende Förderung zu beantragen."
+        keywords="Fördermöglichkeiten, BAFA Förderung, INQA Coaching, Digital Jetzt, ZIM, Gründerzuschuss, staatliche Förderung, Beratungsförderung"
+        url="/foerdermoeglichkeiten"
+      />
       <Header />
 
       {/* Hero */}

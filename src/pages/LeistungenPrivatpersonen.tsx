@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import Header from '../components/Header';
@@ -83,6 +84,12 @@ const NUTZEN = [
 export default function LeistungenPrivatpersonen() {
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A] overflow-clip">
+      <SEO
+        title="Leistungen für Privatpersonen"
+        description="Persönlichkeitsentwicklung, Life Coaching, Karriereberatung und Stressmanagement. Das IUE Institut begleitet Sie auf Ihrem persönlichen Weg zu mehr Klarheit und Erfolg."
+        keywords="Life Coaching, Persönlichkeitsentwicklung, Karriereberatung, Stressmanagement, Selbstmanagement, persönliches Wachstum"
+        url="/leistungen-privatpersonen"
+      />
       <Header />
 
       {/* Hero */}

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import UeberUns from './pages/UeberUns';
@@ -13,6 +14,7 @@ import Datenschutz from './pages/Datenschutz';
 
 export default function App() {
   return (
+    <HelmetProvider>
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
@@ -28,5 +30,6 @@ export default function App() {
         <Route path="/impressum" element={<Impressum />} />
       </Routes>
     </BrowserRouter>
+    </HelmetProvider>
   );
 }

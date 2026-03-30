@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Target, CheckCircle, Award, AlertCircle } from 'lucide-react';
@@ -65,6 +66,12 @@ export default function Kontakt() {
 
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A] overflow-clip">
+      <SEO
+        title="Kontakt"
+        description="Nehmen Sie Kontakt mit dem IUE Institut auf. Kostenloses Erstgespräch vereinbaren – wir freuen uns auf Ihre Anfrage zu Coaching, Beratung oder Ausbildung."
+        keywords="Kontakt, Erstgespräch, Coaching anfragen, Beratung anfragen, IUE Institut Kontakt"
+        url="/kontakt"
+      />
       <Header />
 
       {/* Hero */}

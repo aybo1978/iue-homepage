@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, ChevronRight, TrendingUp, Settings, BarChart2, Globe, Lightbulb, Users } from 'lucide-react';
 import Header from '../components/Header';
@@ -98,6 +99,12 @@ const NUTZEN = [
 export default function Consulting() {
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A] overflow-clip">
+      <SEO
+        title="Consulting & Unternehmensberatung"
+        description="Strategische Unternehmensberatung vom IUE Institut. Wir analysieren, entwickeln und begleiten Ihr Unternehmen zu nachhaltigem Wachstum – individuell, praxisnah und wirkungsvoll."
+        keywords="Consulting, Unternehmensberatung, Strategieberatung, Prozessoptimierung, Unternehmensstrategie, Managementberatung"
+        url="/consulting"
+      />
       <Header />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}

@@ -1,4 +1,5 @@
 // HPI 2.0 - Production-Ready Rebuild
+import SEO from '../components/SEO';
 import { useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -184,6 +185,12 @@ export default function HomePage() {
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A] overflow-clip">
+      <SEO
+        title="Startseite"
+        description="IUE Institut für Unternehmensentwicklung – Professionelles Coaching, Unternehmensberatung und Trainerausbildungen für Unternehmen und Privatpersonen. Systemisch, praxisnah, wirkungsvoll."
+        keywords="Coaching, Unternehmensberatung, Trainerausbildung, Consulting, Unternehmensentwicklung, systemisches Coaching, Business Coaching, Führungskräfte Coaching"
+        url="/"
+      />
       <Header />
 
       {/* ── 1. HERO ─────────────────────────────────────────────────────── */}

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
@@ -91,6 +92,12 @@ const NUTZEN = [
 export default function LeistungenUnternehmen() {
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A] overflow-clip">
+      <SEO
+        title="Leistungen für Unternehmen"
+        description="Professionelle Unternehmensberatung, Führungskräftecoaching, Teamentwicklung und Organisationsberatung. Das IUE Institut begleitet Unternehmen nachhaltig auf ihrem Wachstumskurs."
+        keywords="Unternehmensberatung, Führungskräftecoaching, Teamentwicklung, Organisationsberatung, Change Management, Konfliktmanagement, Business Coaching"
+        url="/leistungen-unternehmen"
+      />
       <Header />
 
       {/* Hero */}

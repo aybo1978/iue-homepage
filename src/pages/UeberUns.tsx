@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Award, Eye, Target, Heart, Users, Star, CheckCircle, Lightbulb, ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
@@ -54,6 +55,12 @@ const WERTE = [
 export default function UeberUns() {
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A]">
+      <SEO
+        title="Über uns"
+        description="Lernen Sie das IUE Institut kennen – unser Team, unsere Werte und unsere systemische Arbeitsweise. Wir begleiten Unternehmen und Menschen mit Kompetenz, Praxisnähe und Vertrauen."
+        keywords="IUE Institut, Über uns, Team, Werte, systemischer Ansatz, Unternehmensentwicklung"
+        url="/ueber-uns"
+      />
       <Header />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}

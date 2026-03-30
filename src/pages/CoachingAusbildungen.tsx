@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, BookOpen, Clock, Users, CheckCircle, ChevronDown, ListChecks } from 'lucide-react';
@@ -34,6 +35,12 @@ export default function CoachingAusbildungen() {
 
   return (
     <div className="min-h-screen bg-[#F7F5F2] text-[#1A1A1A] overflow-clip">
+      <SEO
+        title="Coaching Ausbildungen"
+        description="Zertifizierte Coaching- und Trainerausbildungen beim IUE Institut. Systemisches Coaching, Business Coach, NLP und mehr. Staatlich anerkannt, praxisnah und berufsbegleitend."
+        keywords="Coaching Ausbildung, Trainerausbildung, systemisches Coaching, Business Coach Ausbildung, NLP, zertifizierte Ausbildung, berufsbegleitend"
+        url="/coaching-ausbildungen"
+      />
       <Header />
 
       {/* ── HERO ─────────────────────────────────────────────────────── */}
